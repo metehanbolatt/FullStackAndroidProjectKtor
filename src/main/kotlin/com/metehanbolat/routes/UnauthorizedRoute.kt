@@ -1,0 +1,16 @@
+package com.metehanbolat.routes
+
+import com.metehanbolat.domain.model.Endpoint
+import io.ktor.http.*
+import io.ktor.server.application.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
+
+fun Route.unauthorized() {
+    get(Endpoint.Unauthorized.path) {
+        call.respond(
+            message = "Not Authorized!",
+            status = HttpStatusCode.Unauthorized
+        )
+    }
+}

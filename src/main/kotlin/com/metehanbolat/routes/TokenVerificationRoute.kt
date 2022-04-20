@@ -26,11 +26,11 @@ fun Route.tokenVerificationRoute(app: Application) {
                 app.log.info("TOKEN SUCCESSFULLY VERIFIED: $name, $emailAddress")
                 call.sessions.set(UserSession(id = "123", name = "Metehan"))
                 call.respondRedirect(Endpoint.Authorized.path)
-            }else {
+            } else {
                 app.log.info("TOKEN VERIFICATION FAILED")
                 call.respondRedirect(Endpoint.Unauthorized.path)
             }
-        }else {
+        } else {
             app.log.info("EMPTY TOKEN ID")
             call.respondRedirect(Endpoint.Unauthorized.path)
         }

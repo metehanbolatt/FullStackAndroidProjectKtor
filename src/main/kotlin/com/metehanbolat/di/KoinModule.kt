@@ -1,5 +1,7 @@
 package com.metehanbolat.di
 
+import com.metehanbolat.data.repository.UserDataSourceImpl
+import com.metehanbolat.domain.repository.UserDataSource
 import com.metehanbolat.util.Constants.DATABASE_NAME
 import org.koin.dsl.module
 import org.litote.kmongo.coroutine.coroutine
@@ -10,5 +12,8 @@ val koinModule = module {
         KMongo.createClient()
             .coroutine
             .getDatabase(DATABASE_NAME)
+    }
+    single<UserDataSource> {
+        UserDataSourceImpl(get())
     }
 }

@@ -11,7 +11,7 @@ import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
 
 fun Route.signOutRoute() {
-    authenticate("auth-sessions") {
+    authenticate("auth-session") {
         get(Endpoint.SignOut.path) {
             call.sessions.clear<UserSession>()
             call.respond(

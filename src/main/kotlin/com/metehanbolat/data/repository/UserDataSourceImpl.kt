@@ -25,7 +25,7 @@ class UserDataSourceImpl(
         return users.deleteOne(filter = User::id eq userId).wasAcknowledged()
     }
 
-    override suspend fun updateUser(userId: String, firstName: String, lastName: String): Boolean {
+    override suspend fun updateUserInfo(userId: String, firstName: String, lastName: String): Boolean {
         return users.updateOne(
             filter = User::id eq userId,
             update = setValue(

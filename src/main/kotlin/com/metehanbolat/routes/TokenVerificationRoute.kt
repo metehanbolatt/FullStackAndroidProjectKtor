@@ -62,7 +62,7 @@ private suspend fun PipelineContext<Unit, ApplicationCall>.saveUserToDatabase(
     val response = userDataSource.saveUserInfo(user = user)
     if (response) {
         app.log.info("User Successfully Saved/Retrieved")
-        call.sessions.set(UserSession(id = "123", name = "Metehan"))
+        call.sessions.set(UserSession(id = sub, name = name))
         call.respondRedirect(Endpoint.Authorized.path)
     }else {
         app.log.info("Error Saving The User")
